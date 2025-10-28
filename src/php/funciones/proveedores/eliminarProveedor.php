@@ -1,7 +1,7 @@
 <?php
 
  function eliminarProveedor(){
-    require_once '../conexion/conexionDB.php';
+    require_once '../../conexion/conexionDB.php';
     try {
         $data=file_get_contents("php://input");
     if (!$data) {

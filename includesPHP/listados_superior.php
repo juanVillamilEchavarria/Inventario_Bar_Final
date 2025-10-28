@@ -42,7 +42,7 @@ session_start();
                     <p class="texto-claro">Rol: <?php  echo $_SESSION['rol']; ?></p>
                 </div>
                 <div class="contenedor-cerrar">
-                        <a href="src/php/funciones/cerrarSesion.php"><i class="fa-solid fa-right-from-bracket " style="color: #ff0000;"></i></a>
+                        <a href="src/php/funciones/sesion/cerrarSesion.php"><i class="fa-solid fa-right-from-bracket " style="color: #ff0000;"></i></a>
                         <p class="texto-cerrar">Cerrar Sesion</p>
                         
                 </div>

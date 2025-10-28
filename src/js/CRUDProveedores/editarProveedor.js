@@ -35,7 +35,7 @@ function resetearFormulario(){
 function rellenarCampos(){
     console.log("Enviando al PHP:", {idProveedorModificar: datosEditarProveedor.idProveedorModificar});
     try {
-        fetch ("src/php/funciones/preEditarProveedor.php",{
+        fetch ("src/php/funciones/proveedores/preEditarProveedor.php",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
@@ -165,7 +165,7 @@ function envioEditarProveedor(e){
         formData.append("correoProveedorModificar", correoProveedorModificar);
         formData.append("categoriaProveedorModificar", categoriaProveedorModificar);
         formData.append("imagenProveedorModificar", imagenProveedorModificar);
-        fetch("src/php/funciones/editarProveedor.php", {
+        fetch("src/php/funciones/proveedores/editarProveedor.php", {
             method: "POST",
             body: formData
         })

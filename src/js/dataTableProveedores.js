@@ -65,7 +65,7 @@ window.addEventListener("resize", () => {
 
 const listaProveedores = async function() {
     try {
-        const res= await fetch("src/php/funciones/tablaProveedores.php", {
+        const res= await fetch("src/php/funciones/proveedores/tablaProveedores.php", {
             method: "GET",
            credentials: "include"
         })

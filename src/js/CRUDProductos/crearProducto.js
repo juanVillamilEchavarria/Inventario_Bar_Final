@@ -108,7 +108,7 @@ function envioCrear(e) {
     formData.append("stockProducto", datosCrear.stockProducto);
     formData.append("imagenProducto", datosCrear.imagenProducto);
 
-    fetch("src/php/funciones/crearProducto.php", {
+    fetch("src/php/funciones/productos/crearProducto.php", {
         method: "POST",
         body: formData
     })

@@ -34,7 +34,7 @@ function rellenarCampos(){
         const formData = new FormData();
         formData.append("idProductoModificar", datosEditar.idProductoModificar);
 
-    fetch("src/php/funciones/preEditarProducto.php", {
+    fetch("src/php/funciones/productos/preEditarProducto.php", {
          method: "POST",
         body: formData
     })
@@ -163,7 +163,7 @@ function envioEditar(e) {
     formData.append("stockProductoModificar", datosEditar.stockProductoModificar);
     formData.append("imagenProductoModificar", datosEditar.imagenProductoModificar);
 
-    fetch("src/php/funciones/editarProducto.php", {
+    fetch("src/php/funciones/productos/editarProducto.php", {
         method: "POST",
         body: formData
     })

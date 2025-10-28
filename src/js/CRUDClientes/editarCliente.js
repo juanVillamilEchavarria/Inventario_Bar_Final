@@ -27,7 +27,7 @@ function resetearFormulario() {
 function rellenarCampos() {
     console.log("Enviando al PHP:", {idClienteModificar: datosEditarCliente.idClienteModificar});
     try {
-        fetch("src/php/funciones/preEditarCliente.php", {
+        fetch("src/php/funciones/clientes/preEditarCliente.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
@@ -149,7 +149,7 @@ if (!/^\+?[0-9 ]+$/.test(telefonoClienteModificar)) {
 }
 
 
-    fetch ("src/php/funciones/editarCliente.php",{
+    fetch ("src/php/funciones/clientes/editarCliente.php",{
         method:"POST",
         headers: {
             "Content-Type": "application/json; charset=utf-8"

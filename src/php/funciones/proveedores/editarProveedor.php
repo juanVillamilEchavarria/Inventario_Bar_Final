@@ -1,7 +1,7 @@
 <?php
 
   function editarProveedor(){
-    require_once "../conexion/conexionDB.php";
+       require_once '../../conexion/conexionDB.php';
     try {
     
         $id = $_POST["idProveedorModificar"];

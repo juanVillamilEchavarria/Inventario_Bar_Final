@@ -1,7 +1,7 @@
 <?php
 
   function editarCliente(){
-    require_once '../conexion/conexionDB.php';
+    require_once '../../conexion/conexionDB.php';
     try {
       // traer datos
         $data=file_get_contents("php://input");

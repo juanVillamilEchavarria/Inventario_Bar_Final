@@ -87,7 +87,7 @@ function envioEliminarCliente(e) {
         mensajeEliminarCliente("id no encontrado","ADVERTENCIA");
         return;
     }
-   fetch("src/php/funciones/eliminarCliente.php", {
+   fetch("src/php/funciones/clientes/eliminarCliente.php", {
        method: "POST",
        headers: {
            "Content-Type": "application/json; charset=utf-8"

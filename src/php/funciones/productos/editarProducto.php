@@ -1,6 +1,6 @@
 <?php
 function editarProducto(){
-    require_once '../conexion/conexionDB.php';
+    require_once '../../conexion/conexionDB.php';
 
     $nombre = $_POST['nombreProductoModificar'];
     $precio = $_POST['precioProductoModificar'];

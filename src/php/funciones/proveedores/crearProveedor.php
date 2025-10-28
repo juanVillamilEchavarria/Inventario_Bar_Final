@@ -1,7 +1,7 @@
 <?php
 
   function crearProveedor(){
-   require_once '../conexion/conexionDB.php';
+   require_once '../../conexion/conexionDB.php';
    try {
     if (!isset($_POST['nombreProveedor'],$_POST['telefonoProveedor'],$_POST['correoProveedor'],$_POST['categoriaProveedor'],$_FILES['imagenProveedor'])) {
         echo json_encode(["exito"=>false,"mensaje"=>"No se recibieron datos validos"]);

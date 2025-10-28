@@ -88,7 +88,7 @@ function cerrarMensajeEliminar(){
 function envioEliminar(e) {
     e.preventDefault();
     try {
-        fetch("src/php/funciones/eliminarProducto.php", {
+        fetch("src/php/funciones/productos/eliminarProducto.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"

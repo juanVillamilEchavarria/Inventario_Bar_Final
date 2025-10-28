@@ -1,6 +1,6 @@
 <?php
 function crearProducto() {
-    require __DIR__ . "/../conexion/conexionDB.php";
+    require __DIR__ . "/../../conexion/conexionDB.php";
 
     try {
         // Validar que existan datos

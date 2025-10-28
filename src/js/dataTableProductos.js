@@ -65,7 +65,7 @@ window.addEventListener("resize", () => {
 
 const listaProductos = async function() {
     try {
-        const res= await fetch("src/php/funciones/tablaProductos.php", {
+        const res= await fetch("src/php/funciones/productos/tablaProductos.php", {
             method: "GET",
            credentials: "include"
         })

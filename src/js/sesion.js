@@ -5,7 +5,7 @@ const agregarUsuario= document.querySelector(".contenedor-usuarioNuevo");
 
 function sesion() {
     try {
-        fetch("src/php/funciones/sesion.php", {
+        fetch("src/php/funciones/sesion/sesion.php", {
         method: "GET",
         credentials: "include"
     })

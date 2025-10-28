@@ -82,7 +82,7 @@ function envio(e){
         return;
         
     }
-    fetch("src/php/funciones/usuarioNuevo.php", {
+    fetch("src/php/funciones/usuarios/usuarioNuevo.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json; charset=utf-8" 

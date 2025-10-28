@@ -4,6 +4,7 @@
     
     try {
         require __DIR__   . "/../conexion/conexionDB.php";
+
         // traer datos desde js
 
         $data= file_get_contents("php://input");

@@ -116,7 +116,7 @@ function envioCrearProveedor(e) {
     formData.append("correoProveedor", correoProveedor);
     formData.append("categoriaProveedor", categoriaProveedor);
     formData.append("imagenProveedor", imagenProveedor);
-    fetch("src/php/funciones/crearProveedor.php", {
+    fetch("src/php/funciones/proveedores/crearProveedor.php", {
         method: "POST",
        
         body: formData,

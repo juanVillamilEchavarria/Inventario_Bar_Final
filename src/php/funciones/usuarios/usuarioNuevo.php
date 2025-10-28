@@ -3,7 +3,7 @@
 
 function usuarioNuevo(){
     require_once __DIR__ ."/../conexion/conexionDB.php";
-    require_once __DIR__ ."/../funciones/password.php";
+    require_once __DIR__ ."/../funciones/usuarios/password.php";
     try{
         // traer datos desde js
         $data= file_get_contents("php://input");

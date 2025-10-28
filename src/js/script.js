@@ -111,12 +111,10 @@ function envio (e){
     })
     .then(res => res.json())
     .then(data => {
-         console.log(data.rol);
-        console.log(data.mensaje);
+
         if (data.exito) {
             correcto();
         } else {
-            console.log(data.mensaje);
             mensaje(data.mensaje);
         }
     })

@@ -1,7 +1,7 @@
 <?php
 
 function tablaProductos(){
-     require_once __DIR__ ."/../conexion/conexionDB.php";
+     require_once __DIR__ ."/../../conexion/conexionDB.php";
 
     try {
          $sql = "SELECT * FROM productos";

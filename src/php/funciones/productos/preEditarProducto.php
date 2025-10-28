@@ -1,7 +1,7 @@
 <?php
 
 function preEditarProducto(){
-    require_once '../conexion/conexionDB.php';
+    require_once '../../conexion/conexionDB.php';
     try {
 
       $idProducto = (int)$_POST["idProductoModificar"];

@@ -87,7 +87,7 @@ function envioEliminarProveedor(e){
         return;
     }
     try {
-        fetch ("src/php/funciones/eliminarProveedor.php",{
+        fetch ("src/php/funciones/proveedores/eliminarProveedor.php",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(datosEliminarProveedor)
