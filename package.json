@@ -1,0 +1,28 @@
+{
+  "name": "intergraficas",
+  "version": "1.0.0",
+  "description": "Cartago Bear",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch src/scss:dist/css",
+    "dev": "gulp"
+  },
+  "keywords": [
+    "SASS",
+    "Gulpfile",
+    "JS"
+  ],
+  "author": "Juan Villamil",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.7",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "glob": "^11.0.3",
+    "gulp": "^5.0.1",
+    "gulp-sass": "^6.0.1",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.92.1"
+  }
+}

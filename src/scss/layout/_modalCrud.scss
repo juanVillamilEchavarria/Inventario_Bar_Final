@@ -1,0 +1,64 @@
+@use "base/variables" as v;
+@use "base/mixin" as m;
+// modales
+.modal-content{
+    border-radius: 2rem !important;
+}
+.modal-header{
+    display: block !important;
+}
+.modal-title{
+    text-align: center;
+    font-family: v.$fuente_principal;
+    font-weight: 900;
+    font-size: 4rem;
+
+
+}
+.modal-body{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.form-label{
+    color: v.$negro ;
+    font-family: v.$fuente_principal;
+    font-weight: 400;
+    font-size: 2rem;
+}
+.form-control{
+    padding: 1rem 0rem !important;
+    border-radius: 1.2rem !important;
+    border: 1px solid v.$negroClaro    ;
+    font-size: 2rem !important;
+
+}
+.contenedor-modal-imagen{
+    display: flex !important; 
+    flex-direction: column !important;
+}
+.modal-footer{
+    justify-content: center !important;
+    .btn{
+        width: 20% !important;
+        font-size: 1.5rem !important;
+        text-align: center !important;
+    }
+    
+}
+
+// modo oscuro
+.estilo-texto-oscuro{
+    color: v.$blanco !important;
+ }
+ .estilo-input-oscuro{
+     border: 1px solid v.$blanco !important;
+ }
+// modal proveedores
+.categoriaProveedor{
+    width: 100% !important;
+    border-radius: 1.2rem !important;
+    border: 1px solid v.$negroClaro !important   ;
+}
+
+

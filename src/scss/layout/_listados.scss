@@ -1,0 +1,222 @@
+@use "base/variables" as v;
+@use "base/mixin" as m;
+
+.contenedor-logo{
+    display: flex;
+    flex-direction: row;
+    width: 98%;
+    margin: 0 auto;
+     @include m.tablet{
+         display: flex;
+         flex-direction: column;
+     }    
+}
+.contenedor-usuario-cerrar{
+    display: block;
+    padding-right: 4.5rem;
+    @include m.tablet{
+        order: 4;
+    }
+  
+}
+.contenedor-modo{
+    display: block;
+    @include m.tablet{
+        order: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+    }
+}
+.contenedor-usuario{
+    display: flex;
+    flex-direction: column;
+    p{
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+}
+.contenedor-cerrar{
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     margin-top: -1rem;  
+     .texto-cerrar{
+            font-size: 1rem;
+            color: v.$rojo;
+            margin-top: 1.2rem;
+        
+    }
+   
+        
+   
+}
+
+.logo-listados{
+    margin: 0 auto 1.5rem auto;
+  
+    font-size: 6rem;
+        text-align: center;
+        color: v.$negro;
+        span{
+            font-size: 2rem;
+            margin-left: -2.3rem;
+            font-family: v.$fuente_span;
+            color: v.$dorado;
+        }
+        @include m.tablet{
+            order: 2;
+        }
+       
+
+}
+
+
+.text-white{
+    transition: transform 0.5s ease;
+    
+    &.activo{
+    color:v.$dorado !important;
+    @include m.tablet{
+        margin: 0 !important;
+        background-color: v.$dorado;
+        padding: 1.5rem;
+        color: v.$negro !important;
+    }
+}
+  
+&:hover{
+    color: v.$dorado !important;
+    @include m.tablet{
+        transform: scale(1.02);
+        background-color: v.$dorado;
+        padding: 1.5rem;
+        color: v.$negro !important;
+
+    }
+    
+    
+
+}
+
+}
+// botones CRUD
+.contenedor-opciones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    @include m.tablet{
+        flex-direction: column;
+    }
+}
+.nuevo{
+    background-color: v.$verde;
+    &:hover{
+        background-color: v.$verdeOscuro;
+    }
+}
+.modificar{
+    background-color: v.$azul;
+    &:hover{
+        background-color: v.$azulOscuro;
+    }
+}
+.listar{
+    background-color: v.$amarillo;
+    &:hover{
+        background-color: v.$amarilloOscuro;
+    }
+}
+.nuevo, .modificar, .listar{
+    width: 10%;
+    color: v.$blanco;
+    padding: 0.5rem;
+    margin: 2rem 0 0 2rem;
+    text-align: center;
+    font-family: v.$fuente_principal;
+    font-weight: 400;
+    font-size: 2rem;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    &:hover{
+        cursor: pointer;
+    }
+    @include m.tablet{
+        width: 25%;
+    }
+    @include m.telefono{
+        width: 80%;
+    }
+
+}
+// por defecto ocultos
+.nuevo, .modificar, .listar, .contenedor-usuarioNuevo {
+    display: none;
+}
+.contenedor-usuarioNuevoV{
+   display: flex;
+   flex-direction: column;
+   align-items: center  ;
+   justify-content: center;
+   gap: 1.5rem    ;
+   margin: 2rem 3rem 0 0 ;
+   a{
+            i:hover{
+            cursor: pointer;
+        }
+   }
+   p{
+    margin-top: -1rem;
+    font-size: 1.5rem;
+   }
+   @include m.tablet{
+         padding-top: 1.5rem;
+         margin-right: 0rem;
+         order: 3;
+     }  
+
+}
+
+
+// tabla
+.tabla-campo{
+    padding: 2rem !important;
+    
+}
+
+
+/* Estilos de DataTable en modo oscuro */
+// labels y parrafos
+// dark
+[data-bs-theme="dark"] .dt-container .dt-search label,
+[data-bs-theme="dark"] .dt-container .dt-length label,
+[data-bs-theme="dark"] .dt-container .dt-info,
+[data-bs-theme="dark"] .dt-container .dt-paging {
+
+  color: v.$blanco;
+}
+// light
+[data-bs-theme="light"] .dt-container .dt-search label,
+[data-bs-theme="light"] .dt-container .dt-length label,
+[data-bs-theme="light"] .dt-container .dt-info,
+[data-bs-theme="light"] .dt-container .dt-paging {
+
+  color: v.$negro;
+}
+// inputs y selects
+// dark
+[data-bs-theme="dark"] .dt-container input[type="search"],
+[data-bs-theme="dark"] .dt-container select {
+
+  color: v.$blanco;
+
+}
+// light
+[data-bs-theme="light"] .dt-container input[type="search"],
+[data-bs-theme="light"] .dt-container select {
+
+  color: v.$negro;
+
+}
+

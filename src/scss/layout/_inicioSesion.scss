@@ -1,0 +1,145 @@
+@use "base/variables" as v;
+@use "base/mixin" as m;
+   .imagenInicio img {
+     width: 100%;
+      height: 100%;       
+      object-fit: cover;  
+      display: block;
+    }
+    .back-inicio{
+        background-color: v.$negroClaro;
+    }
+    
+    .logo-inicio{
+        font-size: 6rem;
+        text-align: center;
+        color: v.$blanco;
+        span{
+            font-size: 2rem;
+            margin-left: -2.3rem;
+            font-family: v.$fuente_span;
+            color: v.$dorado;
+        }
+
+    }
+    .contenedor-formulario{
+       
+        padding: 3rem 0rem;
+        width: 90%;
+        margin: 0 auto;
+        border-radius: 2rem;
+    }
+    .formulario{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: 0 auto;
+        gap: 2rem;
+        .campo--input{
+            border-radius: 1rem;
+            padding: 0.8rem;
+            color: v.$blanco;
+        }
+        .btn{
+            width: 70%;
+            margin: 0 auto;
+            font-size: 2rem;
+            font-family: v.$fuente_principal;
+            font-weight: 900;
+             background-color: v.$dorado;
+             transition: transform 0.5s ease;
+             @include m.telefono{
+                width: 100%;
+             }
+             &:hover{
+                transform: scale(1.04);
+             }
+        }
+
+    }
+    .titulo-formulario{
+        font-family: v.$fuente_principal;
+        font-size: 3.5rem;
+        text-align: center;
+        font-weight: 900;
+        color: v.$dorado;
+    }
+// advertencia de llenar los campos
+.divError{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(v.$negro,60%);
+    transition: transform 0.3s ease;
+    display: grid;
+    place-items: center;
+    animation: fadeIn ease-in-out .5s;
+    
+    @include m.telefono{
+            background-color: rgba(v.$negro,80%);
+        }
+    
+    &.fade-out{
+         animation: fadeOut ease .6s;
+
+    }
+    .divMensaje {
+        background-color: white;
+        padding: 3rem 1rem;
+        border-radius: 3rem;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        transition: transform 0.5s ease-out; 
+        &:hover{
+            transform: scale(1.05);
+        }
+        
+
+           
+
+    
+            p{
+                text-align: center;
+                padding: 0;
+                margin: 0 0 1rem 0;
+            }
+    }
+}
+.avisoFormulario{
+    font-size: 2rem;
+    font-weight: 400;
+
+}
+.errorFormulario{
+    color: v.$rojo;
+    font-size: 3rem;
+}
+    
+.botonFormulario{
+    background-color: v.$negroClaro;
+    margin: 4rem auto 0 auto;
+    display: block;
+    font-size: 1.5rem;
+    place-items: center;
+    color: v.$blanco;
+    padding: 0.5rem;
+    width: 30%;
+    border-radius: 0.5rem;
+    border: none;
+    
+    transition: transform 0.5s ease-out; 
+     &:hover{
+            transform: scale(1.1);
+        }
+    @include m.tablet{
+        width: 90%;
+    }
+}
+.iconoFormulario{
+    
+    margin: 0 auto;
+    display: block;
+}
