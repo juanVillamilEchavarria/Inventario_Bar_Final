@@ -108,12 +108,12 @@
 </div>
 
     <?php include_once 'includesPHP/scripts.php'; ?>
-     <script src="dist/js/dataTableClientes.js"></script>
- <script src="dist/js/clientes.js"></script>
- <script src="dist/js/CRUDClientes/crearCliente.js"></script>
- <script src="dist/js/CRUDClientes/editarCliente.js"></script>
- <script src="dist/js/CRUDClientes/eliminarCliente.js"></script>
-          <script src="dist/js/modoOscuro.js"></script>
+     <script src="dist/js/clientes/dataTableClientes.js"></script>
+ <script src="dist/js/clientes/clientes.js"></script>
+ <script src="dist/js/clientes/crearCliente.js"></script>
+ <script src="dist/js/clientes/editarCliente.js"></script>
+ <script src="dist/js/clientes/eliminarCliente.js"></script>
+          <script src="dist/js/temaPagina/modoOscuro.js"></script>
      
 </body>
 </html>

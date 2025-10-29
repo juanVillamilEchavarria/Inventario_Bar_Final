@@ -1,4 +1,5 @@
 <?php
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +49,7 @@
 
     
 
-    <script src="dist/js/script.js"></script>
+    <script src="dist/js/login/login.js"></script>
 
 </body>
 </html>

@@ -57,7 +57,7 @@ session_start();
 
     </div>
     <?php include_once 'includesPHP/scripts.php'; ?>
-    <script src="dist/js/usuarioNuevo.js"></script>
+    <script src="dist/js/usuarios/usuarioNuevo.js"></script>
     
 </body>
 </html>

@@ -156,12 +156,12 @@ include_once 'includesPHP/listados_superior.php';
 
 
 <?php include_once 'includesPHP/scripts.php'; ?>
-<script src="dist/js/dataTableProveedores.js"></script>
-<script src="dist/js/proveedores.js"></script>
-<script src="dist/js/CRUDProveedores/crearProveedor.js"></script>
-<script src="dist/js/CRUDProveedores/editarProveedor.js"></script>
-<script src="dist/js/CRUDProveedores/eliminarProveedor.js"></script>
-         <script src="dist/js/modoOscuro.js"></script>
+<script src="dist/js/proveedores/dataTableProveedores.js"></script>
+<script src="dist/js/proveedores/proveedores.js"></script>
+<script src="dist/js/proveedores/crearProveedor.js"></script>
+<script src="dist/js/proveedores/editarProveedor.js"></script>
+<script src="dist/js/proveedores/eliminarProveedor.js"></script>
+         <script src="dist/js/temaPagina/modoOscuro.js"></script>
 
     
 </body>

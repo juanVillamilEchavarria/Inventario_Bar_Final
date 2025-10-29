@@ -1,17 +1,9 @@
 <?php
-session_start();
-header("Content-Type: application/json");
-
-if (!isset($_SESSION['usuario'])) {
-    echo json_encode([
-        "exito" => false,
-        "mensaje" => "No estás logueado"
-    ]);
-    exit;
+function iniciarSesion(){
+    session_start();
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: /interGraficas/index.php");
+    }
+    return true;
 }
-
-echo json_encode([
-    "exito" => true,
-    "usuario" => $_SESSION['usuario'],
-    "rol" => $_SESSION['rol']
-]);
+?>

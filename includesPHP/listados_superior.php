@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once 'src/php/funciones/sesion/sesion.php';
+iniciarSesion();
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +75,7 @@ session_start();
         <h3 class="listar">Listar</h3>
     </div>
                 
-                 <script src="dist/js/sesion.js"></script>
+                 <script src="dist/js/sesion/sesion.js"></script>
     
 
 

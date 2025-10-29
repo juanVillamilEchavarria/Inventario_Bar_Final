@@ -1,0 +1,17 @@
+{
+    "name": "juanvillamil/inter-graficas",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/php/classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "juanVillamilEchavarria",
+            "email": "juanestebanvillamilechavarria@gmail.com"
+        }
+    ],
+    "require": {
+        
+    }
+}

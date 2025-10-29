@@ -3,7 +3,8 @@
  function verificarInicio(){
     
     try {
-        require __DIR__   . "/../conexion/conexionDB.php";
+        require __DIR__   . "/../../conexion/conexionDB.php";
+        $db=conectarDB();
 
         // traer datos desde js
 
@@ -18,25 +19,24 @@
         }
 
         // asignar variables
-        $usuario = $input["usuario"];
-        $contrasena = $input["contrasena"];
+        $usuario = $input['usuario'];
+        $contrasena =  $input['contrasena'];
 
         // hacer consulta
             $sql="SELECT * FROM usuarios WHERE nombre_usuario= ?;";
             $stmt=$db->prepare($sql);
             $stmt->execute([$usuario]);
             if (!$stmt) {
-                echo json_encode(["exito"=>false,"mensaje"=>$stmt->error]);
+                echo json_encode(["exito"=>false,"mensaje"=>$db->errorInfo()]);
                 return;
             }
-            $resultado=$stmt->fetch_assoc();
+            $resultado=$stmt->fetch(PDO::FETCH_ASSOC);
         // validar si existe el usuario
              if (!$resultado) {
             echo json_encode(["exito"=>false,"mensaje"=>"Usuario no encontrado"]);
             return;
                 
         }
-       
         // verificar contraseña
             $password=$resultado['contraseña'];
             $rol=$resultado['rol'];

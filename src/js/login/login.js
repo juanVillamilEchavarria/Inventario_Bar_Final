@@ -102,7 +102,7 @@ function envio (e){
     }
         
     
-    fetch("src/php/funciones/login.php", {
+    fetch("src/php/funciones/login/login.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json; charset=utf-8" 
@@ -119,7 +119,6 @@ function envio (e){
         }
     })
     .catch(err => {
-        console.error("Error en la petición:", err);
         mensaje("Ocurrió un error al validar");
     });
 

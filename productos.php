@@ -1,5 +1,7 @@
 <?php include_once 'includesPHP/listados_superior.php'; 
 
+
+
 ?>
 
     <div class="container-fluid my-4">
@@ -120,13 +122,13 @@
 
 
    <?php include_once 'includesPHP/scripts.php'; ?>
-        <script src="dist/js/dataTableProductos.js"></script>
+        <script src="dist/js/productos/dataTableProductos.js"></script>
     
-        <script src="dist/js/productos.js"></script>
-        <script src="dist/js/CRUDProductos/crearProducto.js"></script>
-        <script src="dist/js/CRUDProductos/editarProducto.js"></script>
-        <script src="dist/js/CRUDProductos/eliminarProducto.js"></script>
-                 <script src="dist/js/modoOscuro.js"></script>
+        <script src="dist/js/productos/productos.js"></script>
+        <script src="dist/js/productos/crearProducto.js"></script>
+        <script src="dist/js/productos/editarProducto.js"></script>
+        <script src="dist/js/productos/eliminarProducto.js"></script>
+                 <script src="dist/js/temaPagina/modoOscuro.js"></script>
 
     
 </body>

@@ -70,6 +70,8 @@ const listaProductos = async function() {
            credentials: "include"
         })
         const data=await res.json();
+
+
         
     
             let contenido = "";
@@ -79,7 +81,7 @@ const listaProductos = async function() {
                     <tr>
                         <td class="text-center tabla-campo">${user.id}</td>
                         <td class="text-center tabla-campo">
-                           <img src="data:image/jpeg;base64,${user.imagen}" 
+                           <img src="data:image/jpeg;base64,${user.imagen_base64}" 
                                 />
                         </td>
                         <td class="text-center tabla-campo">${user.nombre}</td>
