@@ -3,7 +3,6 @@ const btnNewUser=document.querySelector("#btnUsuario");
 const icono = btnModo.querySelector("i");
 const body = document.querySelector("body");
 const html = document.querySelector("html");
-const logoListados = document.querySelector(".logo-listados");
 const textoClaro=document.querySelectorAll(".texto-claro");
 const formLabel=document.querySelectorAll(".form-label");
 const modalTitle=document.querySelectorAll(".modal-title");
@@ -38,11 +37,9 @@ btnModo.addEventListener("click", () => {
 
 function modoOscuro() {
   body.setAttribute("data-bs-theme", "dark");
-  logoListados.classList.add("estilo-texto-oscuro");
   textoClaro.forEach(element => {
     element.classList.add("estilo-texto-oscuro");
   });
-  btnNewUser.setAttribute("style", "color: #ffffff");
   icono.setAttribute("class", "fa-solid fa-sun fa-2xl");
   formLabel.forEach(element => {
     element.classList.add("estilo-texto-oscuro");
@@ -75,11 +72,9 @@ function modoOscuro() {
 
 function modoClaro() {
   body.setAttribute("data-bs-theme", "light");
-  logoListados.classList.remove("estilo-texto-oscuro");
   textoClaro.forEach(element => {
     element.classList.remove("estilo-texto-oscuro");
   });
-  btnNewUser.setAttribute("style", "color: #000000");
   icono.setAttribute("class", "fa-solid fa-moon fa-2xl");
   formLabel.forEach(element => {
     element.classList.remove("estilo-texto-oscuro");

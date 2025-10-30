@@ -110,7 +110,7 @@ function envioCrearProveedor(e) {
     mensajeAgregarProveedor("El teléfono debe contener solo números y opcionalmente iniciar con +","ADVERTENCIA");
     return;
 }
-    const formData = new FormData(formAgregarProveedor);
+    const formData = new FormData();
     formData.append("nombreProveedor", nombreProveedor);
     formData.append("telefonoProveedor", telefonoProveedor);
     formData.append("correoProveedor", correoProveedor);

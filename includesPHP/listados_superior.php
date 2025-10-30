@@ -36,43 +36,53 @@ iniciarSesion();
 </head>
 <body >
     <header>
-        <div class="contenedor-logo">
-            <div class="contenedor-usuario-cerrar">
-                <div class="contenedor-usuario">
-                    <p class="texto-claro">usuario: <?php  echo $_SESSION['usuario']; ?></p>
-                    <p class="texto-claro">Rol: <?php  echo $_SESSION['rol']; ?></p>
-                </div>
-                <div class="contenedor-cerrar">
-                        <a href="src/php/funciones/sesion/cerrarSesion.php"><i class="fa-solid fa-right-from-bracket " style="color: #ff0000;"></i></a>
-                        <p class="texto-cerrar">Cerrar Sesion</p>
+        <div class=" contenedor-superior">
+            <h1 class="logo-listados">Whisky Bear <span>cartago</span></h1>
+            <div class="superior-derecha">
+                  <nav class="navegacion-principal">
+                      <a id="producto" href="productos.php">productos</a>
+                      <a id="clientes" href="clientes.php">clientes</a>
+                      <a id="proveedores" href="proveedores.php">proveedores</a>
+                  </nav>
+                  <div class="contenedor-modo">
+                      <button class="btn rounded-fill" id="btnModo"><i class="fa-solid fa-moon fa-xl" style="color: #ffffffff;"></i></button>
+                  </div>
+
+            </div> 
+       </div>
+       <div class="contenedor-usuario">
+                  <div class="menu-cerrar">
+                      <i class="fa-solid fa-bars  fa-xl" style="color: #ffffffff;"></i>
+                        <div class="contenido-menu">
+                          <div class="contenedor-usuarioNuevo no-display">
+                              <a href="usuario_nuevo.php"><i class="fa-solid fa-user-plus fa-xl" style="color: #ffffffff" id="btnUsuario"></i></a>
+                              <p>Añadir usuario</p>
+                              
+                          </div>
+                          <ul class="contenedor-info-usuario no-display">
+                            <li><p>usuario: <?php  echo $_SESSION['usuario']; ?></p></li>
+                            <li><p>rol: <?php  echo $_SESSION['rol']; ?></p></li>
+                            <div class="contenedor-cerrar">
+                                <a href="src/php/funciones/sesion/cerrarSesion.php"><i class="fa-solid fa-right-from-bracket " style="color: #ff0000;"></i></a>
+                                <p class="texto-cerrar">Cerrar Sesion</p>
+                            
+                            </div>
+                          </ul>
+                          
+
+                      </div>
                         
-                </div>
-            </div>
-                
-         <h1 class="logo-listados">Whisky Bear <span>cartago</span></h1>
-         
-            <div class="contenedor-usuarioNuevo">
-                <a href="usuario_nuevo.php"><i class="fa-solid fa-user-plus fa-2xl" style="color: #000000" id="btnUsuario"></i></a>
-                <p class="texto-claro">Añadir usuario</p>
-                
-            </div>
-            <div class="contenedor-modo">
-                <button class="btn rounded-fill" id="btnModo"><i class="fa-solid fa-moon fa-xl"></i></button>
-            </div>
-     </div>
-         <div class="container-fluid p-0">
-            <nav class="row m-0  py-4 bg-black text-center py-md-3">
-                <a class="col-12 col-md-4 mt-0 pt-4 pb-4 p-md-0 text-white " id="producto" href="productos.php">productos</a>
-                <a class="col-12 col-md-4  mt-2 mb-2 pt-4 pb-4 p-md-0  text-white " id="clientes" href="clientes.php">clientes</a>
-                <a class="col-12 col-md-4 pt-4 pb-4 p-md-0  mb-4 mb-md-0 text-white " id="proveedores" href="proveedores.php">proveedores</a>
-            </nav>
+                      
+                  </div>
+                  
         </div>
+        
 
     </header>
     <div class="contenedor-opciones">
         <h3 class="nuevo">Nuevo+</h3>
-        <h3 class="modificar">Modificar</h3>
-        <h3 class="listar">Listar</h3>
+        <h3 class="modificar btn-azul">Modificar</h3>
+
     </div>
                 
                  <script src="dist/js/sesion/sesion.js"></script>

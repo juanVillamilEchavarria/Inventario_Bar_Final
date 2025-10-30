@@ -24,17 +24,17 @@ function resetearFormulario() {
     datosEditarCliente.telefonoClienteModificar = "";
     datosEditarCliente.nombreClienteModificar = "";
 }
+
+
 function rellenarCampos() {
     console.log("Enviando al PHP:", {idClienteModificar: datosEditarCliente.idClienteModificar});
     try {
+
+        const formData= new FormData();
+        formData.append("idClienteModificar",datosEditarCliente.idClienteModificar);
         fetch("src/php/funciones/clientes/preEditarCliente.php", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-            body: JSON.stringify({
-                idClienteModificar: datosEditarCliente.idClienteModificar
-            })
+            body: formData
         })
         .then(res => res.json())
         .then(data => {
@@ -147,14 +147,16 @@ if (!/^\+?[0-9 ]+$/.test(telefonoClienteModificar)) {
     mensajeEditarCliente("El teléfono debe contener solo números y opcionalmente iniciar con +","ADVERTENCIA");
     return;
 }
+const formData= new FormData();
+    formData.append("idClienteModificar",datosEditarCliente.idClienteModificar);
+    formData.append("nombreClienteModificar",datosEditarCliente.nombreClienteModificar);
+    formData.append("telefonoClienteModificar",datosEditarCliente.telefonoClienteModificar);
+    formData.append("correoClienteModificar",datosEditarCliente.correoClienteModificar);
 
 
     fetch ("src/php/funciones/clientes/editarCliente.php",{
         method:"POST",
-        headers: {
-            "Content-Type": "application/json; charset=utf-8"
-        },
-        body:JSON.stringify(datosEditarCliente)
+        body: formData
     })
     .then(res=>res.json())
     .then(data=>{

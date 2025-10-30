@@ -86,11 +86,12 @@ function envioEliminarProveedor(e){
         mensajeEliminarProveedor("id proveedor vacio","ADVERTENCIA");
         return;
     }
+    const formData= new FormData();
+    formData.append("idProveedorEliminar",datosEliminarProveedor.idProveedorEliminar);
     try {
         fetch ("src/php/funciones/proveedores/eliminarProveedor.php",{
             method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(datosEliminarProveedor)
+            body: formData
         })
         .then(res => res.json())
         .then(data => {

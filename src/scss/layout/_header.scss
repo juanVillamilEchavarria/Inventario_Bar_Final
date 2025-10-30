@@ -1,0 +1,221 @@
+@use "base/variables" as v;
+@use "base/mixin" as m;
+.contenedor-superior{
+    background-color: v.$negroClaro;
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+     @include m.tablet{
+         display: flex;
+         flex-direction: column;
+     }    
+}
+.superior-derecha{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 3rem;
+
+    width: 50%;
+    @include m.tablet{
+        
+        order: 2;
+        flex-direction: column;
+        width: 100%;
+        margin: 3rem 0 0 0 ;
+        gap: 2rem;
+    }
+}
+
+.navegacion-principal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    a{
+        color: v.$blanco;
+        font-size: 2rem;
+        font-weight: 400;
+        &:hover{
+            color: v.$dorado;  
+       } 
+    }
+    @include m.tablet{
+        order: 2;
+        flex-direction: column;
+        width: 100%;
+        gap: 2rem;
+        a{
+            width: 100%;
+            text-align: center;
+            padding: 1.5rem;
+            &:hover{
+                margin: 0 ;
+                background-color: v.$dorado;
+                
+                color: v.$negro ;
+            }
+        }
+    }
+}
+.contenedor-usuario{
+    display: block;
+    padding-right: 4.5rem;
+    @include m.tablet{
+        order: 4;
+    }
+  
+}
+.contenedor-modo{
+    display: block;
+    @include m.tablet{
+        order: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+    }
+}
+.contenedor-info-usuario{
+    display: flex;
+    flex-direction: column;
+    li,p{
+        color: v.$blanco;
+    }
+    p{
+        text-align: left;
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+}
+.contenedor-cerrar{
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     margin-top: -1rem;  
+     .texto-cerrar{
+            font-size: 1rem;
+            color: v.$rojo;
+            margin-top: 1.2rem;
+        
+    }
+   
+        
+   
+}
+// estilo del modal hecho en js para el menu de cerrar sesion
+.menu-cerrar{
+     position: absolute;
+        top: 0;
+        right: 0;
+        text-align: center;
+        visibility: visible;
+        margin-bottom: 3rem;
+        i{
+             &:hover{
+                cursor: pointer;
+            }
+
+        }
+}
+.modal-menu-cerrar{
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform .4s ease, opacity .4s ease;
+    background-color: rgba(v.$negroClaro, 90%);
+    border-radius: 3rem;
+    padding: 3rem;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8%;
+    height: 30%;
+    z-index: 1000;
+    @include m.tablet{
+        width: 20%;
+
+    }
+    &.menu-activo{
+         opacity: 1;
+        transform: translateX(0);
+    }
+    .menu-cerrar{
+        display: flex;
+        flex-direction: column;
+        position: inherit;
+         width: 100%;
+         gap: 3rem;
+        i{
+            align-self: flex-end;
+            margin-top: 2rem;
+           
+           
+        }
+    }
+}
+.contenido-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-listados{
+    margin: 0;
+    font-size: 4rem;
+        text-align: center;
+        color: v.$blanco;
+        span{
+            font-size: 2rem;
+            margin-left: -2.3rem;
+            font-family: v.$fuente_span;
+            color: v.$dorado;
+        }
+        @include m.tablet{
+            order: 2;
+        }
+       
+
+}
+.activo, .activo *, * .activo{
+    color:v.$dorado !important ;
+    @include m.tablet{
+        margin: 0 ;
+        background-color: v.$dorado;
+        padding: 1.5rem;
+        color: v.$negro !important ;
+    }
+}
+.nuevo, .modificar, .contenedor-usuarioNuevo {
+    display: none;
+}
+.contenedor-usuarioNuevoV{
+   display: flex;
+   flex-direction: column;
+   align-items: center  ;
+   justify-content: center;
+   gap: 1.5rem    ;
+   a{
+            i:hover{
+            cursor: pointer;
+        }
+   }
+   p{
+    color: v.$blanco;
+    margin-top: -1rem;
+    font-size: 1.5rem;
+   }
+   @include m.tablet{
+         padding-top: 1.5rem;
+         margin-right: 0rem;
+     }  
+
+}

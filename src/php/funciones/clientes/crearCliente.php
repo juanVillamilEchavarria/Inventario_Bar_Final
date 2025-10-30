@@ -1,31 +1,29 @@
 <?php
+  require_once __DIR__ ."/../../classes/app.php";
+  use App\modelos\Cliente;
+   
 
- function crearCliente(){   
-    require_once '../../conexion/conexionDB.php';
     try {
-        $data=file_get_contents("php://input");
-        $input=json_decode($data,true);
-        $nombre=$input['nombreCliente'];
-        $telefono=$input['telefonoCliente'];
-        $correo=$input['correoCliente'];
-        $sql="INSERT INTO clientes (nombre,telefono,correo) VALUES(?,?,?)";
-        $stmt=$db->prepare($sql);
-        if (!$stmt) {
-            echo json_encode(["exito"=>false,"mensaje"=>$db->error]);
+        if(!isset($_POST["nombreCliente"]) || !isset($_POST["correoCliente"]) || !isset($_POST["telefonoCliente"])){
+            echo json_encode(["exito"=>false,"mensaje"=>"No se recibieron datos"]);
             return;
         }
-        $stmt->bind_param("sss",$nombre,$telefono,$correo);
-        if (!$stmt->execute()) {
-            echo json_encode(["exito"=>false,"mensaje"=>$stmt->error]);
-            return;
+        $cliente = new Cliente($_POST);
+        if($cliente->nombre===false){
+            echo json_encode(["exito"=>false,"mensaje"=>"El nombre es obligatorio"]);
         }
-        $stmt->close();
+        if($cliente->correo===false){
+            echo json_encode(["exito"=>false,"mensaje"=>"El correo es obligatorio"]);
+        }
+        if($cliente->telefono===false){
+            echo json_encode(["exito"=>false,"mensaje"=>"El telefono es obligatorio"]);
+        }
+        if(!$cliente->crear()){
+            echo json_encode(["exito"=>false,"mensaje"=>"Error al crear el cliente"]);
+        }
         echo json_encode(["exito"=>true,"mensaje"=>"Cliente creado"]);
-        
     } catch (\Throwable $th) {
        echo json_encode(["exito"=>false,"mensaje"=>$th->getMessage()]);
     }
- }
- crearCliente();
 
-?>
+

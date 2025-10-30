@@ -28,8 +28,8 @@ use Intervention\Image\ImageManager as Image;
             $carpetaImagenes = CARPETA_IMAGENES . "productos/";
             if(!is_dir($carpetaImagenes)) {
                 if (!mkdir($carpetaImagenes, 0755, true)) {
-             echo json_encode(["exito" => false, "mensaje" => "Error al crear la carpeta de imágenes."]);
-             return;
+                echo json_encode(["exito" => false, "mensaje" => "Error al crear la carpeta de imágenes."]);
+                return;
         }
             }
             

@@ -1,37 +1,23 @@
 
 <?php
 
-function eliminarCliente() {
-    require_once '../../conexion/conexionDB.php';
+  require_once __DIR__ ."/../../classes/app.php";
+    use App\modelos\Cliente;
     try {
-
-        $data=file_get_contents("php://input");
-        if(empty($data)){
+         if(!isset($_POST["idClienteEliminar"])){
             echo json_encode(["exito"=>false,"mensaje"=>"No se recibieron datos"]);
-            return; 
-
-        }
-        $input=json_decode($data,true);
-        $id=$input['idClienteEliminar'];
-         if (!is_numeric($id) || $id <= 0) {
-        echo json_encode(["exito" => false, "mensaje" => "ID inválido"]);
-        return;
-         }
-        $sql="DELETE FROM clientes WHERE id=?";
-        $stmt=$db->prepare($sql);
-        if(!$stmt){
-            echo json_encode(["exito"=>false,"mensaje"=>$db->error]);
             return;
         }
-        $stmt->bind_param("i",$id);
-        if(!$stmt->execute()){
-            echo json_encode(["exito"=>false,"mensaje"=>$stmt->error]);
+        $cliente=Cliente::find($_POST['idClienteEliminar']);
+        if (!$cliente) {
+            echo json_encode(["exito" => false, "mensaje" => "El cliente con ID {$_POST['idClienteEliminar']} no existe."]);
             return;
-
         }
-        $stmt->close();
-        echo json_encode(["exito"=>true,"mensaje"=>"Cliente Eliminado"]);
-
+        if (!$cliente->eliminar()) {
+            echo json_encode(["exito" => false, "mensaje" => "Error al eliminar el cliente."]);
+            return;
+        }
+        echo json_encode(["exito"=>true,"mensaje"=>"Cliente eliminado"]);
 
         
     } catch (\Throwable $th) {
@@ -39,6 +25,3 @@ function eliminarCliente() {
         return;
     }
 
-}
-eliminarCliente();
-?>

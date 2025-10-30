@@ -89,12 +89,13 @@ function envioCrearCliente(e){
     mensajeCrearCliente("El teléfono debe contener solo números y opcionalmente iniciar con +","ADVERTENCIA");
     return;
 }
+    const formData= new FormData();
+    formData.append("nombreCliente",nombreCliente);
+    formData.append("telefonoCliente",telefonoCliente);
+    formData.append("correoCliente",correoCliente);
     fetch ("src/php/funciones/clientes/crearCliente.php",{
         method: "POST",
-        headers: {
-            "Content-Type": "application/json; charset=utf-8" 
-        },
-        body: JSON.stringify(datosCrearCliente)
+        body: formData
     })
     .then(res => res.json())
     .then(data => {

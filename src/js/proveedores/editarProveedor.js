@@ -34,15 +34,12 @@ function resetearFormulario(){
 }
 function rellenarCampos(){
     console.log("Enviando al PHP:", {idProveedorModificar: datosEditarProveedor.idProveedorModificar});
+    const formData=new FormData();
+    formData.append("idProveedorModificar",datosEditarProveedor.idProveedorModificar);
     try {
         fetch ("src/php/funciones/proveedores/preEditarProveedor.php",{
             method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-            body: JSON.stringify({
-                idProveedorModificar: datosEditarProveedor.idProveedorModificar
-            })
+            body: formData
         })
         .then(res => res.json())
         .then(data => {
@@ -52,6 +49,7 @@ function rellenarCampos(){
                 datosEditarProveedor.telefonoProveedorModificar = data.proveedor.telefono;
                 datosEditarProveedor.nombreProveedorModificar = data.proveedor.nombre;
                 datosEditarProveedor.categoriaProveedorModificar = data.proveedor.categoria;
+                datosEditarProveedor.imagenProveedorModificar = data.proveedor.imagen;
                 correoProveedorModificar.value = data.proveedor.correo;
                 telefonoProveedorModificar.value = data.proveedor.telefono;
                 nombreProveedorModificar.value = data.proveedor.nombre;

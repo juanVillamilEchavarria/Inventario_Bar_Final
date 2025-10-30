@@ -79,7 +79,7 @@ const listaProveedores = async function() {
                     <tr>
                         <td class="text-center tabla-campo">${user.id}</td>
                         <td class="text-center tabla-campo">
-                           <img src="data:image/jpeg;base64,${user.imagen}" 
+                           <img src="/interGraficas/imagenes/proveedores/${user.imagen}" 
                                 />
                         </td>
                         <td class="text-center tabla-campo">${user.nombre}</td>
@@ -116,19 +116,50 @@ window.addEventListener("load", async () => {
 
 
 const modificar = document.querySelector(".modificar");
-const listar = document.querySelector(".listar");
-
 modificar.onclick = async () => {
     if (datatableInicio) {
-        await datatable.column(6).visible(true);
+
+         if(modificar.classList.contains("btn-azul")){
+                    await modificar.classList.remove("btn-azul");
+                    modificar.classList.add("opciones-activas");
+        }
+
+
+        if(modificar.classList.contains("opciones-activas")){
+           
+            await mostrarOpciones();
+            modificar.classList.remove("opciones-activas");
+         modificar.classList.add("opciones-inactivas");
+         modificar.textContent = "Ocultar";
+       
+        }else{
+            await ocultarOpciones();
+            modificar.classList.add("opciones-activas");
+            modificar.classList.remove("opciones-inactivas");
+             modificar.textContent = "Modificar";
+          
+        }
     }
 }
 
-listar.addEventListener("click", async () => {
-    if (datatableInicio) {
-        datatable.column(6).visible(false);
-    }
-});
+function mostrarOpciones(){
+    datatable.column(6).visible(true);
+  
+ 
+}
+
+function ocultarOpciones(){
+    datatable.column(6).visible(false);
+
+
+}
+
+
+
+
+
+
+
 
 
 

@@ -101,13 +101,13 @@ function envio (e){
         
     }
         
+      const formData= new FormData();
+      formData.append("usuario",usuario);
+      formData.append("contrasena",contrasena);
     
     fetch("src/php/funciones/login/login.php", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json; charset=utf-8" 
-        },
-        body: JSON.stringify(datos)
+        body: formData
     })
     .then(res => res.json())
     .then(data => {

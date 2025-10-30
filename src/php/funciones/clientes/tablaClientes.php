@@ -1,22 +1,22 @@
 <?php
-
-function tablaClientes(){
-     require_once __DIR__ ."/../../conexion/conexionDB.php";
+  require_once __DIR__ ."/../../classes/app.php";
+  use App\modelos\Cliente;
+   
 
     try {
-         $sql = "SELECT * FROM clientes where id > ?";
-         $stmt = $db->prepare($sql);
-         $stmt->execute([0]);
-         $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-   
+         $cliente = Cliente::obtenerTodos();
+    
+       
+         $clientes = [];
+         foreach($cliente as $cli){
+             
+             $clientes[] = $cli->toArray();
+             
+         }
     echo json_encode($clientes);
     return $clientes;
-        
-    } catch (\Throwable $th) {
-        echo $th;
-    }
-}   
-tablaClientes();
 
-?>
+    } catch (\Throwable $th) {
+        echo $th->getMessage();
+    }
+

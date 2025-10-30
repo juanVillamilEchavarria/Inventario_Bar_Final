@@ -111,20 +111,44 @@ window.addEventListener("load", async () => {
 
 // botones
 const modificar = document.querySelector(".modificar");
-const listar = document.querySelector(".listar");
 
 modificar.onclick = async () => {
     if (datatableInicio) {
-        await datatable.column(5).visible(true);
+
+         if(modificar.classList.contains("btn-azul")){
+                    await modificar.classList.remove("btn-azul");
+                    modificar.classList.add("opciones-activas");
+        }
+
+
+        if(modificar.classList.contains("opciones-activas")){
+           
+            await mostrarOpciones();
+            modificar.classList.remove("opciones-activas");
+         modificar.classList.add("opciones-inactivas");
+         modificar.textContent = "Ocultar";
+       
+        }else{
+            await ocultarOpciones();
+            modificar.classList.add("opciones-activas");
+            modificar.classList.remove("opciones-inactivas");
+             modificar.textContent = "Modificar";
+          
+        }
     }
 }
 
-listar.addEventListener("click", async () => {
-    if (datatableInicio) {
-        datatable.column(5).visible(false);
-    }
-});
+function mostrarOpciones(){
+    datatable.column(5).visible(true);
 
+ 
+}
+
+function ocultarOpciones(){
+    datatable.column(5).visible(false);
+
+
+}
 
 
 

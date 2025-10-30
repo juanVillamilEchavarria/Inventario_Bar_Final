@@ -87,12 +87,11 @@ function envioEliminarCliente(e) {
         mensajeEliminarCliente("id no encontrado","ADVERTENCIA");
         return;
     }
+    const formData= new FormData();
+    formData.append('idClienteEliminar',datosEliminarCliente.idClienteEliminar);
    fetch("src/php/funciones/clientes/eliminarCliente.php", {
        method: "POST",
-       headers: {
-           "Content-Type": "application/json; charset=utf-8"
-       },
-       body: JSON.stringify(datosEliminarCliente)
+       body: formData
    })
    .then(res => res.json())
    .then(data => {
