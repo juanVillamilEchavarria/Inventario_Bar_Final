@@ -10,7 +10,12 @@ const formModificarProducto = document.querySelector("#formModificarProducto");
 const idProductoModificar = document.querySelector("#idProductoModificar");
 const modalModificarProducto = new bootstrap.Modal(document.querySelector('#modalModificarProducto'));
 const btnActualizarProducto = document.querySelector("#btnActualizarProducto");
-const bodyDatatable = document.querySelector("#tableBody_productos");   
+const bodyDatatable = document.querySelector("#tableBody_productos");  
+
+ const stockProductoModificar=document.querySelector("#stockProductoModificar") 
+ const precioProductoModificar= document.querySelector("#precioProductoModificar")
+const nombreProductoModificar=document.querySelector("#nombreProductoModificar")
+const imagenProductoModificar=document.querySelector("#imagenProductoModificar");
 // cada que haga click, llama a abrirModal
 bodyDatatable.addEventListener("click", abrirModalModificarProducto);
 btnActualizarProducto.addEventListener("click", envioEditar);
@@ -41,15 +46,16 @@ function rellenarCampos(){
     .then(res => res.json())
     .then(data => {
         // recibimos la informacion
-        console.log(data);
+
         
         if (data.exito) {
             datosEditar.stockProductoModificar = data.producto.stock;
             datosEditar.precioProductoModificar = data.producto.precio;
             datosEditar.nombreProductoModificar = data.producto.nombre;
-           document.querySelector("#stockProductoModificar").value = data.producto.stock;
-           document.querySelector("#precioProductoModificar").value =data.producto.precio;
-          document.querySelector("#nombreProductoModificar").value = data.producto.nombre;
+            datosEditar.imagenProductoModificar = data.producto.imagen;
+            stockProductoModificar.value = data.producto.stock;
+            precioProductoModificar.value =data.producto.precio;
+            nombreProductoModificar.value = data.producto.nombre;
             document.querySelector("#infoImagenProductoModificar").textContent = "Ya hay una foto cargada";
         } else {
             mensaje(data.mensaje,"ADVERTENCIA");
@@ -162,6 +168,7 @@ function envioEditar(e) {
     formData.append("precioProductoModificar", datosEditar.precioProductoModificar);
     formData.append("stockProductoModificar", datosEditar.stockProductoModificar);
     formData.append("imagenProductoModificar", datosEditar.imagenProductoModificar);
+    console.log(formData);
 
     fetch("src/php/funciones/productos/editarProducto.php", {
         method: "POST",
@@ -169,7 +176,7 @@ function envioEditar(e) {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data);
+  
         if (data.exito) {
             mensajeEditar("Producto editado con éxito","",'<svg  xmlns="http://www.w3.org/2000/svg"  width="74"  height="74"  viewBox="0 0 24 24"  fill="#00c20d"  class="icon icon-tabler icons-tabler-filled icon-tabler-rosette-discount-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12.01 2.011a3.2 3.2 0 0 1 2.113 .797l.154 .145l.698 .698a1.2 1.2 0 0 0 .71 .341l.135 .008h1a3.2 3.2 0 0 1 3.195 3.018l.005 .182v1c0 .27 .092 .533 .258 .743l.09 .1l.697 .698a3.2 3.2 0 0 1 .147 4.382l-.145 .154l-.698 .698a1.2 1.2 0 0 0 -.341 .71l-.008 .135v1a3.2 3.2 0 0 1 -3.018 3.195l-.182 .005h-1a1.2 1.2 0 0 0 -.743 .258l-.1 .09l-.698 .697a3.2 3.2 0 0 1 -4.382 .147l-.154 -.145l-.698 -.698a1.2 1.2 0 0 0 -.71 -.341l-.135 -.008h-1a3.2 3.2 0 0 1 -3.195 -3.018l-.005 -.182v-1a1.2 1.2 0 0 0 -.258 -.743l-.09 -.1l-.697 -.698a3.2 3.2 0 0 1 -.147 -4.382l.145 -.154l.698 -.698a1.2 1.2 0 0 0 .341 -.71l.008 -.135v-1l.005 -.182a3.2 3.2 0 0 1 3.013 -3.013l.182 -.005h1a1.2 1.2 0 0 0 .743 -.258l.1 -.09l.698 -.697a3.2 3.2 0 0 1 2.269 -.944zm3.697 7.282a1 1 0 0 0 -1.414 0l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.32 1.497l2 2l.094 .083a1 1 0 0 0 1.32 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" /></svg>');
             resetearFormulario();
@@ -194,7 +201,6 @@ function resultadoEditar(e) {
     } else {
         datosEditar[e.target.id] = e.target.value;
     }
-    console.log(datosEditar);
 }
 nombreProductoModificar.addEventListener("change",resultadoEditar);
 precioProductoModificar.addEventListener("change",resultadoEditar);

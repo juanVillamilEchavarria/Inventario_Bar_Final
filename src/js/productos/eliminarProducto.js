@@ -88,12 +88,11 @@ function cerrarMensajeEliminar(){
 function envioEliminar(e) {
     e.preventDefault();
     try {
+        const formData= new FormData();
+        formData.append("idProductoEliminar", datosEliminar.idProductoEliminar);
         fetch("src/php/funciones/productos/eliminarProducto.php", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-            body: JSON.stringify(datosEliminar)
+            body: formData
         })
         .then(res => res.json())
         .then(data => {

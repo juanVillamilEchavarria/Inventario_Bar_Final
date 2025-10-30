@@ -1,76 +1,81 @@
 <?php
-function editarProducto(){
-    require_once '../../conexion/conexionDB.php';
+//  Iniciar el Buffer de Salida para capturar cualquier salida inesperada (warnings, espacios, etc.)
+ob_start();
 
-    $nombre = $_POST['nombreProductoModificar'];
-    $precio = $_POST['precioProductoModificar'];
-    $stock  = $_POST['stockProductoModificar'];
-    $id     = $_POST['idProductoModificar'];
-        // Validaciones de datos
-    if (empty($nombre)) {
-        echo json_encode(["exito" => false, "mensaje" => "El nombre no puede estar vacío"]);
+require_once __DIR__ ."/../../classes/app.php";
+
+use App\modelos\Producto;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager as Image;
+
+try {
+    //  Validar que existan datos POST mínimos
+    if (!isset($_POST["nombreProductoModificar"], $_POST["precioProductoModificar"], $_POST["stockProductoModificar"], $_POST["idProductoModificar"])) {
+        ob_end_clean();
+        echo json_encode(["exito" => false, "mensaje" => "No se recibieron datos obligatorios para la modificación."]);
         return;
     }
 
-    if (!is_numeric($precio) || $precio <= 0) {
-        echo json_encode(["exito" => false, "mensaje" => "El precio debe ser un número mayor que 0"]);
+    //  Crear y sincronizar el producto
+    $producto = new Producto($_POST);
+
+    //  Validaciones de datos (usando el resultado de Sanitizar de la clase Producto)
+    if ($producto->id === false || $producto->id === null) {
+        ob_end_clean();
+        echo json_encode(["exito" => false, "mensaje" => "ID de producto inválido para modificar."]);
+        return;
+    }
+    
+    if (empty($producto->nombre) || $producto->nombre === false) {
+        ob_end_clean();
+        echo json_encode(["exito" => false, "mensaje" => "El nombre no puede estar vacío."]);
         return;
     }
 
-    if (!is_numeric($stock) || $stock < 0) {
-        echo json_encode(["exito" => false, "mensaje" => "El stock debe ser un número igual o mayor que 0"]);
+    if ($producto->precio === false || $producto->stock === false) {
+        ob_end_clean();
+        echo json_encode(["exito" => false, "mensaje" => "El precio y el stock deben ser números mayores que 0."]);
         return;
     }
-
-    if (!is_numeric($id) || $id <= 0) {
-        echo json_encode(["exito" => false, "mensaje" => "ID inválido"]);
-        return;
-    }
-
-    // si viene imagen
-    if (isset($_FILES['imagenProductoModificar']) && is_uploaded_file($_FILES['imagenProductoModificar']['tmp_name'])) {
-        $imagen = file_get_contents($_FILES['imagenProductoModificar']['tmp_name']);
-
-        $sql = "UPDATE productos SET nombre = ?, precio = ?, stock = ?, imagen = ? WHERE id = ?";
-        $stmt = $db->prepare($sql);
-
-        if (!$stmt) {
-            echo json_encode(["exito" => false, "mensaje" => $db->error]);
-            return;
+    
+    //  Manejo de la Imagen
+    if(isset($_FILES['imagenProductoModificar']) && $_FILES['imagenProductoModificar']['tmp_name']){
+        
+        //  Generar nombre único y procesar imagen
+        $nombreImagen = md5(uniqid(rand(), true)).".jpg";
+        $manager = new Image(Driver::class);
+        $imagen = $manager->read($_FILES['imagenProductoModificar']['tmp_name'])->cover(800, 600);
+        
+        // setImagen elimina la imagen antigua si existe y asigna la nueva
+        $producto->setImagen($nombreImagen);
+        
+        //  Crear la carpeta de imágenes si no existe
+        $carpetaImagenes = CARPETA_IMAGENES . "productos/";
+        if(!is_dir($carpetaImagenes)) {
+            if (!mkdir($carpetaImagenes, 0755, true)) {
+                 ob_end_clean();
+                 echo json_encode(["exito" => false, "mensaje" => "Error al crear la carpeta de imágenes."]);
+                 return;
+            }
         }
-        $null=null;
-       
-        $stmt->bind_param("sdibi", $nombre, $precio, $stock, $null, $id);
-        $stmt->send_long_data(3, $imagen);
-
-        if (!$stmt->execute()) {
-            echo json_encode(["exito" => false, "mensaje" => $stmt->error]);
-            return;
-        }
-
-        $stmt->close();
-        echo json_encode(["exito" => true, "mensaje" => "Producto modificado con imagen"]);
+        
+        //  Guardar la nueva imagen
+        $imagen->save($carpetaImagenes . $nombreImagen);
+    }
+    
+    //  Actualizar en la base de datos
+    if(!$producto->actualizar()){
+        ob_end_clean();
+        echo json_encode(["exito" => false, "mensaje" => "Error al actualizar el producto en la Base de Datos."]);
         return;
     }
-
-    // si NO hay imagen 
-    $sql = "UPDATE productos SET nombre = ?, precio = ?, stock = ? WHERE id = ?";
-    $stmt = $db->prepare($sql);
-
-    if (!$stmt) {
-        echo json_encode(["exito" => false, "mensaje" => $db->error]);
-        return;
-    }
-
-    $stmt->bind_param("sdii", $nombre, $precio, $stock, $id);
-
-    if (!$stmt->execute()) {
-        echo json_encode(["exito" => false, "mensaje" => $stmt->error]);
-        return;
-    }
-
-    $stmt->close();
-    echo json_encode(["exito" => true, "mensaje" => "Producto modificado sin imagen"]);
+    
+    //  ÉXITO (Independientemente de si se subió imagen o no)
+    ob_end_clean();
+    echo json_encode(["exito" => true, "mensaje" => "Producto actualizado"]);
+    
+}catch (\Throwable $th) {
+    // Manejo de errores fatales
+    ob_end_clean();
+    echo json_encode(["exito" => false, "mensaje" => "Error interno del servidor: " . $th->getMessage()]);
 }
-editarProducto();
-?>

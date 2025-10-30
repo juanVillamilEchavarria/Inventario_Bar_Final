@@ -81,7 +81,7 @@ const listaProductos = async function() {
                     <tr>
                         <td class="text-center tabla-campo">${user.id}</td>
                         <td class="text-center tabla-campo">
-                           <img src="data:image/jpeg;base64,${user.imagen_base64}" 
+                           <img class ="imagen-tabla" src="/interGraficas/imagenes/productos/${user.imagen}" alt="${user.imagen}"
                                 />
                         </td>
                         <td class="text-center tabla-campo">${user.nombre}</td>

@@ -1,22 +1,14 @@
 <?php
+      require_once __DIR__ ."/../../classes/app.php";
+    use App\modelos\Producto;
 
-function tablaProductos(){
-     require_once __DIR__ ."/../../conexion/conexionDB.php";
-     $db=conectarDB();
 
     try {
-         $sql = "SELECT * FROM productos";
-    $stmt = $db->prepare($sql);
-    $stmt->execute();
-    $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($productos as $key => $producto) {
-    if (isset($producto['imagen']) && $producto['imagen'] !== null) {
-        $productos[$key]['imagen_base64'] = base64_encode($producto['imagen']);
-    } else {
-        $productos[$key]['imagen_base64'] = null;
+         $producto=Producto::obtenerTodos();
+    $productos = [];
+    foreach ($producto as $prod) {
+        $productos[] = $prod->toArray();
     }
-    unset($productos[$key]['imagen']);
-}
 
     echo json_encode($productos);
     return $productos;
@@ -24,7 +16,6 @@ function tablaProductos(){
     } catch (\Throwable $th) {
         echo $th;
     }
-}   
-tablaProductos();
+
 
 ?>
