@@ -17,7 +17,7 @@
 
         $usuario=Usuario::findUsername($usuarioPost);
         if (!$usuario) {
-            echo json_encode(array("exito" => false, "mensaje"=>"Usuario o contraseña incorrectos"));
+            echo json_encode(array("exito" => false, "mensaje"=>"Usuario no encontrado"));
             return;
         }
         $resultado=$usuario->toArray();

@@ -108,6 +108,7 @@
 </div>
 
     <?php include_once 'includesPHP/scripts.php'; ?>
+            <script src="dist/js/sesion/menuCerrar.js"></script>
      <script src="dist/js/clientes/dataTableClientes.js"></script>
  <script src="dist/js/clientes/clientes.js"></script>
  <script src="dist/js/clientes/crearCliente.js"></script>

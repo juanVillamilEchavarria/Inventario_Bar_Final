@@ -156,6 +156,7 @@ include_once 'includesPHP/listados_superior.php';
 
 
 <?php include_once 'includesPHP/scripts.php'; ?>
+        <script src="dist/js/sesion/menuCerrar.js"></script>
 <script src="dist/js/proveedores/dataTableProveedores.js"></script>
 <script src="dist/js/proveedores/proveedores.js"></script>
 <script src="dist/js/proveedores/crearProveedor.js"></script>

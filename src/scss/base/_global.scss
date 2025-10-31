@@ -63,4 +63,35 @@ body > section {
     padding: 10rem 0
 }
 
+.exitoso, .error{
+    margin: 0 auto;
+    width: 80%;
+       padding: .5rem;
+    text-align: center;
+    font-family: v.$fuente_principal;
+    transition: opacity 0.5s ease-out, margin 0.5s ease-out; 
+    
+    opacity: 1;
+}
+.exitoso{
+    background-color: v.$verdeOscuro;
+ 
+    color: v.$blanco;
+}
 
+
+.error{
+    background-color: v.$rojo;
+
+    color: v.$blanco;
+}
+
+.texto-azul{
+    color: v.$azul !important;
+}
+.btn-azul{
+    background-color: v.$azul !important;
+    &:hover{
+        background-color: v.$azulOscuro !important;
+    }
+}

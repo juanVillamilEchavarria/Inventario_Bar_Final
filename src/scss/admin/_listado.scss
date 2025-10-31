@@ -1,0 +1,67 @@
+@use "base/variables" as v;
+@use "base/mixin" as m;
+
+.contenedor-volver-admin{
+    display: flex;
+    
+}
+.nuevo-user, .volver{
+    width: 9%;
+    color: v.$blanco;
+    padding: 1.5rem;
+    margin: 2rem 0 2rem 2rem;
+    text-align: center;
+    font-family: v.$fuente_principal;
+    font-weight: bold;
+    font-size: 2rem;
+    border: 1px solid gray;
+    border-radius: 1.5rem;
+    
+
+   background-color: v.$verde;
+    &:hover{
+        background-color: v.$verdeOscuro;
+        cursor: pointer;
+    }
+}
+
+.tabla-users, .tabla-users th, .tabla-users td{
+    border-collapse: collapse;
+    border: 2px solid v.$azulOscuro;
+}
+.tabla-users{
+    width: 90%;
+    margin: 3rem auto;
+
+    border-radius: 1.5rem;
+    thead,tbody{
+        tr{
+            td{
+                text-align: center;
+                font-family: v.$fuente_principal;
+                font-weight: bold;
+                font-size: 2rem;
+                padding: 1rem;
+            }
+           
+        }
+    }
+    thead{
+        tr{
+            th{
+                text-align: center;
+                font-family: v.$fuente_principal;
+                font-weight: bold;
+                font-size: 2rem;
+                background-color: v.$negro;
+                color: v.$blanco;
+                    
+   
+            }
+        }
+    }
+}
+ [data-bs-theme="dark"] td{
+                color: v.$blanco;
+ }
+

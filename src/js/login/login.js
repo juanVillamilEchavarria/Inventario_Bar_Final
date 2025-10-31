@@ -119,7 +119,7 @@ function envio (e){
         }
     })
     .catch(err => {
-        mensaje("Ocurrió un error al validar");
+        mensaje("Ocurrió un error al validar", err);
     });
 
 

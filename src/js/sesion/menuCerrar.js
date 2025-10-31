@@ -6,7 +6,10 @@ const contenedorUsuarioNuevoV=document.querySelector(".contenedor-usuarioNuevo")
 
 function crearMenu(){
     contenedorInfoUsuario.classList.remove("no-display");
-    contenedorUsuarioNuevoV.classList.remove("no-display");
+    if(contenedorUsuarioNuevoV !== null){
+            contenedorUsuarioNuevoV.classList.remove("no-display");
+        
+    }
     const divMenuModal= document.createElement("DIV");
     divMenuModal.classList.add("modal-menu-cerrar");
 
@@ -30,7 +33,11 @@ function cerrarMenu(){
         contenedorUsuario.appendChild(menuCerrar);
         
         contenedorInfoUsuario.classList.add("no-display");
-        contenedorUsuarioNuevoV.classList.add("no-display");
+         if(contenedorUsuarioNuevoV !== null){
+               contenedorUsuarioNuevoV.classList.add("no-display");
+        
+    }
+     
     }
 }
 

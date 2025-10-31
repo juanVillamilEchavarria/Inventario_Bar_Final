@@ -1,6 +1,11 @@
 <?php
-require_once 'src/php/funciones/sesion/sesion.php';
+
+
+$modo_admin= isset($es_admin) && $es_admin;
+
+  require_once __DIR__.'/../src/php/funciones/sesion/sesion.php';
 iniciarSesion();
+
 ?>
 
 <!DOCTYPE html>
@@ -30,8 +35,8 @@ iniciarSesion();
     <!-- datatables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.3/css/dataTables.bootstrap5.min.css">
     <!-- css -->
-    <link rel="preload" href="dist/css/app.css">
-    <link rel="stylesheet" href="dist/css/app.css">
+    <link rel="preload" href="/interGraficas/dist/css/app.css">
+    <link rel="stylesheet" href="/interGraficas/dist/css/app.css">
     <title>Whisky Bear</title>
 </head>
 <body >
@@ -39,26 +44,34 @@ iniciarSesion();
         <div class=" contenedor-superior">
             <h1 class="logo-listados">Whisky Bear <span>cartago</span></h1>
             <div class="superior-derecha">
+              <?php if(!$modo_admin): ?>
                   <nav class="navegacion-principal">
                       <a id="producto" href="productos.php">productos</a>
                       <a id="clientes" href="clientes.php">clientes</a>
                       <a id="proveedores" href="proveedores.php">proveedores</a>
                   </nav>
+              <?php endif; ?>
+              <?php if($modo_admin): ?>
+                <h3 class="text-white m-0">Administrador De Usuarios</h3>
+              <?php endif; ?>
                   <div class="contenedor-modo">
                       <button class="btn rounded-fill" id="btnModo"><i class="fa-solid fa-moon fa-xl" style="color: #ffffffff;"></i></button>
                   </div>
 
             </div> 
        </div>
+       
        <div class="contenedor-usuario">
                   <div class="menu-cerrar">
                       <i class="fa-solid fa-bars  fa-xl" style="color: #ffffffff;"></i>
                         <div class="contenido-menu">
+                          <?php if(!$modo_admin): ?>
                           <div class="contenedor-usuarioNuevo no-display">
-                              <a href="usuario_nuevo.php"><i class="fa-solid fa-user-plus fa-xl" style="color: #ffffffff" id="btnUsuario"></i></a>
-                              <p>Añadir usuario</p>
+                              <a href="admin/index.php"><i class="fa-solid fa-users fa-xl" style="color: #ffffffff" id="btnUsuario"></i></a>
+                              <p>Gestar usuarios</p>
                               
                           </div>
+                          <?php endif; ?>
                           <ul class="contenedor-info-usuario no-display">
                             <li><p>usuario: <?php  echo $_SESSION['usuario']; ?></p></li>
                             <li><p>rol: <?php  echo $_SESSION['rol']; ?></p></li>
@@ -76,16 +89,27 @@ iniciarSesion();
                   </div>
                   
         </div>
+    
         
 
     </header>
+    <?php if($modo_admin): ?>
+    <div class="contenedor-volver-admin">
+     <a class="volver" href="/interGraficas/productos.php">Volver</a>
+    </div>
+    <?php endif; ?>
     <div class="contenedor-opciones">
+      <?php if($modo_admin): ?>
+        <a class="nuevo-user" href="propiedades/usuario_nuevo.php">Nuevo Usuario</a>
+      <?php elseif(!$modo_admin): ?>
         <h3 class="nuevo">Nuevo+</h3>
         <h3 class="modificar btn-azul">Modificar</h3>
+      <?php endif; ?>
 
     </div>
-                
+                <?php if(!$modo_admin): ?>
                  <script src="dist/js/sesion/sesion.js"></script>
+                <?php endif; ?>
     
 
 

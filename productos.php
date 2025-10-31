@@ -123,6 +123,7 @@
 
 
    <?php include_once 'includesPHP/scripts.php'; ?>
+           <script src="dist/js/sesion/menuCerrar.js"></script>
         <script src="dist/js/productos/dataTableProductos.js"></script>
     
         <script src="dist/js/productos/productos.js"></script>
